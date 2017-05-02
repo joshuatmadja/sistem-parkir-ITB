@@ -1,0 +1,152 @@
+//google fonts
+@import url("https://fonts.googleapis.com/css?family=Lato|Montserrat");
+
+//fonts
+$lato-font: 'Lato', sans-serif;
+$montserrat-font: 'Montserrat', sans-serif;
+
+//colors
+$text-color-dark: #121212;
+$text-color-light: #fcfcfc;
+$accent-color: #0a007a;
+$background-color: #fafafa;
+
+//borders
+$form-border: solid 1px $text-color-dark;
+
+//sizes
+$title-size: 4rem;
+$subtitle-size: 2rem;
+$text-size: 1.5rem;
+
+//atomic design
+$distances:(
+	10: 10px,
+	20: 20px,
+	30: 30px,
+	40: 40px,
+	50: 50px,
+	60: 60px
+);
+
+//alignments
+.left{
+	text-align: left;
+}
+
+.center{
+	text-align: center;
+}
+
+.right{
+	text-align: right;
+}
+
+
+//vertical aligning
+.v-parent{
+	position: relative;
+}
+
+.v-child{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+//styles
+html{
+   height: 100%;	
+}
+
+body{
+	font-family: $lato-font;
+	font-size: $text-size;
+	height: 100%;	
+}
+
+.table-fixed{
+	table-layout: fixed;
+}
+
+.full{
+	height: 100%;
+}
+
+.formbox{
+	border: $form-border;
+}
+
+.bgcolor{
+	position: fixed;
+	z-index:-999;
+	width: 100%;
+	height: 100%;
+	background-color: $background-color;
+}
+
+.title{
+	font-family: $montserrat-font;
+	font-size: $title-size;
+}
+
+@each $name, $val in $distances{
+	.mg#{$name}{
+		margin: #{$val};
+	}
+
+	.mg-t#{$name}{
+		margin-top: #{$val};
+	}
+
+	.mg-b#{$name}{
+		margin-bottom: #{$val};
+	}
+
+	.mg-r#{$name}{
+		margin-right: #{$val};
+	}
+
+	.mg-l#{$name}{
+		margin-left: #{$val};
+	}
+
+	.pd#{$name}{
+		padding: #{$val};
+	}
+
+	.pd-t#{$name}{
+		padding-top: #{$val};
+	}
+
+	.pd-b#{$name}{
+		padding-bottom: #{$val};
+	}
+
+	.pd-r#{$name}{
+		padding-right: #{$val};
+	}
+
+	.pd-l#{$name}{
+		padding-left: #{$val};
+	}
+}
+
+.button{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.blue-button{
+	@extend .button;
+    background-color: $accent-color;
+	color: $text-color-light;
+}
+
+.blue-button:hover{
+	@extend .button;
+	background-color: lighten($accent-color, 20%);
+	color: $text-color-light;
+}
