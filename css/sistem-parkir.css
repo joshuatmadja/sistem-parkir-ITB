@@ -45,6 +45,10 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 4rem; }
 
+.subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem; }
+
 .mg10 {
   margin: 10px; }
 
@@ -225,16 +229,40 @@ body {
 .pd-l60 {
   padding-left: 60px; }
 
-.button, .blue-button, .blue-button:hover {
+.button, .blue-button, .magenta-button, .red-button, .green-button {
   font-weight: bold;
   text-transform: uppercase; }
 
 .blue-button {
-  background-color: #0a007a;
-  color: #fcfcfc; }
+  color: #fcfcfc;
+  background-color: #0a007a; }
+  .blue-button:hover {
+    background-color: #1200e0;
+    color: #fcfcfc; }
 
-.blue-button:hover {
-  background-color: #1200e0;
-  color: #fcfcfc; }
+.magenta-button {
+  color: #fcfcfc;
+  background-color: #910166; }
+  .magenta-button:hover {
+    background-color: #f602ad;
+    color: #fcfcfc; }
+
+.red-button {
+  color: #fcfcfc;
+  background-color: #7c0010; }
+  .red-button:hover {
+    background-color: #e2001d;
+    color: #fcfcfc; }
+
+.green-button {
+  color: #fcfcfc;
+  background-color: #098900; }
+  .green-button:hover {
+    background-color: #10ef00;
+    color: #fcfcfc; }
+
+.big-button {
+  padding: 30px;
+  font-size: 1.75rem; }
 
 /*# sourceMappingURL=sistem-parkir.css.map */

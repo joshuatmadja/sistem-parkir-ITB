@@ -9,6 +9,7 @@ $montserrat-font: 'Montserrat', sans-serif;
 $text-color-dark: #121212;
 $text-color-light: #fcfcfc;
 $accent-color: #0a007a;
+$accent-color-2: #910166;
 $background-color: #fafafa;
 
 //borders
@@ -92,6 +93,11 @@ body{
 	font-size: $title-size;
 }
 
+.subtitle{
+	font-family: $montserrat-font;
+	font-size: $subtitle-size;
+}
+
 @each $name, $val in $distances{
 	.mg#{$name}{
 		margin: #{$val};
@@ -139,14 +145,33 @@ body{
 	text-transform: uppercase;
 }
 
-.blue-button{
+@mixin btn-theme($btn-color, $text-color){
 	@extend .button;
-    background-color: $accent-color;
-	color: $text-color-light;
+	color: $text-color;
+	background-color: $btn-color;
+	&:hover{
+		background-color: lighten($btn-color,20%);
+		color: $text-color;
+	}
 }
 
-.blue-button:hover{
-	@extend .button;
-	background-color: lighten($accent-color, 20%);
-	color: $text-color-light;
+.blue-button{
+	@include btn-theme($accent-color, $text-color-light);
+}
+
+.magenta-button{
+	@include btn-theme($accent-color-2, $text-color-light);
+}
+
+.red-button{
+	@include btn-theme(#7c0010, $text-color-light);
+}
+
+.green-button{
+	@include btn-theme(#098900, $text-color-light);
+}
+
+.big-button{
+	padding: 30px;
+	font-size: 1.75rem;
 }
