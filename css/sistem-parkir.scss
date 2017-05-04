@@ -175,3 +175,25 @@ body{
 	padding: 30px;
 	font-size: 1.75rem;
 }
+
+.input-label{
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+@mixin message($color){
+	background-color: lighten($color, 40%);
+	color: $color;
+	font-weight: bold;
+	font-size: 1.5rem;
+	border: solid 1px $color;
+	border-radius: 5%;
+}
+
+.error{
+	@include message(#FF0000);
+}
+
+.bold{
+	font-weight:bold;
+}
