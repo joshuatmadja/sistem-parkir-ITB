@@ -34,6 +34,14 @@
 			window.location.href = "input-masuk-dosen.php";
 		});
 
+		$('#btn-keluar-dosen').on('click',function(){
+			window.location.href = "input-keluar-dosen.php";
+		});
+
+		$('#btn-keluar-tamu').on('click',function(){
+			window.location.href = "input-keluar-tamu.php";
+		});
+
 		$('#btn-logout').on('click',function(){
 			window.location.href = "index.php";
 		})

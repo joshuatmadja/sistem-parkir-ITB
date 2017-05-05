@@ -4,11 +4,10 @@
 	$arr = array();
 	$barcode = 0;
 
-	$query = "SELECT * FROM transaksi_mahasiswa JOIN kendaraan JOIN mahasiswa ON `transaksi_mahasiswa`.`nim` = `mahasiswa`.`nim` and `mahasiswa`.`noplat` = `kendaraan`.`noplat` WHERE `transaksi_mahasiswa`.`barcode` = '$id'";
+	$query = "SELECT * FROM transaksi_dosen WHERE `barcode` = '$id'";
 	$result = $mysqli->query($query);
 	while($ch=$result->fetch_array(MYSQLI_ASSOC)){
-		$arr["nim"] = $ch['nim'];
-		$arr["jenis"]=$ch['jenis'];
+		$arr["nip"] = $ch['nip'];
 		$arr["jam_masuk"]=$ch['jam_masuk'];
 		$barcode = $ch['barcode'];
 		//echo $barcode;

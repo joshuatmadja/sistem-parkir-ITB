@@ -4,10 +4,10 @@
 	<div class="container pd-t60">
 		<div class="row center">
 			<div class="col-md-12 title">Sistem Parkir ITB</div>
-			<div class="col-md-12 subtitle mg-t10 mg-b60">Kendaraan Keluar Mahasiswa</div>
+			<div class="col-md-12 subtitle mg-t10 mg-b60">Kendaraan Keluar Dosen</div>
 		</div>
 		<div id="message"></div>
-		<form id="form-input" method="get" action="proses-keluar-mahasiswa.php">
+		<form id="form-input" method="get" action="proses-keluar-dosen.php">
 			<div class="row">
 				<div class="col-md-offset-3 col-md-2">
 					<div class="input-label">Barcode</div>
@@ -17,10 +17,10 @@
 			</div>
 			<div class="row">
 				<div class="col-md-offset-3 col-md-2">
-					<div class="input-label">NIM</div>
+					<div class="input-label">NIP</div>
 				</div>
 				<div class="col-md-2">
-					<input class="form-control" type="text" name="nim" id="nim" readonly></div>
+					<input class="form-control" type="text" name="nip" id="nip" readonly></div>
 			</div>
 			<div class="row">
 				<div class="col-md-offset-3 col-md-2">
@@ -68,7 +68,7 @@
 				diff = diff + (24*60*60);
 				console.log(Math.ceil(diff/3600));
 			}
-			diff = Math.ceil(diff/3600);
+
 			
 
 		},1000);
@@ -77,11 +77,11 @@
 
 	$('#barcode').on('keyup',function (){
 		var setInput = function(a,b,c){
-			$('#nim').val(a);
+			$('#nip').val(a);
 			$('#jam-masuk').val(b);
 			$('#biaya').val(c);
 		}
-		$.ajax({url:"find-mahasiswa-out.php?id="+$(this).val(), success: function(result){
+		$.ajax({url:"find-dosen-out.php?id="+$(this).val(), success: function(result){
 				console.log(result);
 				var hitung = function(){
 					var total = 0;
@@ -101,7 +101,7 @@
 					console.log(json);
 					jenis = json.jenis;
 					tarif = json.tarif;
-					setInput(json.nim, json.jam_masuk, hitung());
+					setInput(json.nip, json.jam_masuk, tarif);
 				}
 				else{
 					jenis = "";

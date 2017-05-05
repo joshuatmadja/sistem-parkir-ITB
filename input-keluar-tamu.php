@@ -4,10 +4,10 @@
 	<div class="container pd-t60">
 		<div class="row center">
 			<div class="col-md-12 title">Sistem Parkir ITB</div>
-			<div class="col-md-12 subtitle mg-t10 mg-b60">Kendaraan Keluar Mahasiswa</div>
+			<div class="col-md-12 subtitle mg-t10 mg-b60">Kendaraan Keluar Tamu</div>
 		</div>
 		<div id="message"></div>
-		<form id="form-input" method="get" action="proses-keluar-mahasiswa.php">
+		<form id="form-input" method="get" action="proses-keluar-tamu.php">
 			<div class="row">
 				<div class="col-md-offset-3 col-md-2">
 					<div class="input-label">Barcode</div>
@@ -17,10 +17,10 @@
 			</div>
 			<div class="row">
 				<div class="col-md-offset-3 col-md-2">
-					<div class="input-label">NIM</div>
+					<div class="input-label">No Plat</div>
 				</div>
 				<div class="col-md-2">
-					<input class="form-control" type="text" name="nim" id="nim" readonly></div>
+					<input class="form-control" type="text" name="noplat" id="noplat" readonly></div>
 			</div>
 			<div class="row">
 				<div class="col-md-offset-3 col-md-2">
@@ -64,11 +64,14 @@
 			var end = toSeconds($('#jam-keluar').val());
 			var start = toSeconds($('#jam-masuk').val());
 			diff = end - start;
+
 			if(start > end){
 				diff = diff + (24*60*60);
-				console.log(Math.ceil(diff/3600));
 			}
+
+			console.log(Math.ceil(diff/3600));
 			diff = Math.ceil(diff/3600);
+
 			
 
 		},1000);
@@ -77,22 +80,23 @@
 
 	$('#barcode').on('keyup',function (){
 		var setInput = function(a,b,c){
-			$('#nim').val(a);
+			$('#noplat').val(a);
 			$('#jam-masuk').val(b);
 			$('#biaya').val(c);
 		}
-		$.ajax({url:"find-mahasiswa-out.php?id="+$(this).val(), success: function(result){
+		$.ajax({url:"find-tamu-out.php?id="+$(this).val(), success: function(result){
 				console.log(result);
 				var hitung = function(){
 					var total = 0;
 					if(jenis == "Mobil"){
-						if(diff >= 1 && diff <= 3) total = 3000 * diff;
-						else total = 9000;
+						total = 3000 * diff;
+
 					}
 					else if (jenis == "Motor"){
-						total = 2000;
+						total = 2000 * diff;
 					}
 					else total = 0;
+					console.log("Total "+diff)
 					return total+tarif;
 				}
 			//else console.log("ngga");
@@ -101,7 +105,7 @@
 					console.log(json);
 					jenis = json.jenis;
 					tarif = json.tarif;
-					setInput(json.nim, json.jam_masuk, hitung());
+					setInput(json.no_plat, json.jam_masuk, hitung());
 				}
 				else{
 					jenis = "";

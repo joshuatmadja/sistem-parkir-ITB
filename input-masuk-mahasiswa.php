@@ -57,8 +57,18 @@
 </div>
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 <script>
-	var d = new Date();
-	$('#jam-masuk').val(d.getHours()+":"+d.getMinutes());
+	$(document).ready(function(){
+		var toSeconds = function(s){
+			var b = s.split(':');
+			return b[0]*3600 + b[1]*60 + b[2]*1 ;
+		};
+		var setTime= setInterval(function(){
+			var d = new Date();
+			$('#jam-masuk').val(d.toTimeString().split(' ')[0]);
+			
+		},1000);
+
+	});
 
 	$('#nim').on('keyup',function (){
 		var setInput = function(a,b){
