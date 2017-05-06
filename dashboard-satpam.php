@@ -20,6 +20,11 @@
 
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 	<script>
+
+		$('#btn-lapor-pelanggaran').on('click',function(){
+			window.location.href = "input-pelanggaran.php";
+		});
+
 		$('#btn-logout').on('click',function(){
 			window.location.href = "index.php";
 		})

@@ -167,6 +167,11 @@ body{
 	@include btn-theme(#7c0010, $text-color-light);
 }
 
+.orange-button{
+	@include btn-theme(#9b6700, $text-color-light);
+}
+
+
 .green-button{
 	@include btn-theme(#098900, $text-color-light);
 }

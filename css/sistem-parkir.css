@@ -229,7 +229,7 @@ body {
 .pd-l60 {
   padding-left: 60px; }
 
-.button, .blue-button, .magenta-button, .red-button, .green-button {
+.button, .blue-button, .magenta-button, .red-button, .orange-button, .green-button {
   font-weight: bold;
   text-transform: uppercase; }
 
@@ -252,6 +252,13 @@ body {
   background-color: #7c0010; }
   .red-button:hover {
     background-color: #e2001d;
+    color: #fcfcfc; }
+
+.orange-button {
+  color: #fcfcfc;
+  background-color: #9b6700; }
+  .orange-button:hover {
+    background-color: #ffaa02;
     color: #fcfcfc; }
 
 .green-button {

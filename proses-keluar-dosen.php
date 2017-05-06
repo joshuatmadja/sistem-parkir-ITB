@@ -14,5 +14,5 @@
 	$res = $mysqli->query($queryupdate2);
 	echo 'lolos 2';
 
-	header('Location:dashboard-admin.php?status=2');
+	header('Location:dashboard-admin-gerbangutama.php?status=2');
 ?>

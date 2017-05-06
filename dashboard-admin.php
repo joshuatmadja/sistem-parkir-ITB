@@ -38,6 +38,10 @@
 			window.location.href = "input-keluar-mahasiswa.php";
 		});
 
+		$('#btn-keluar-umum').on('click',function(){
+			window.location.href = "input-keluar-umum.php";
+		});
+
 		$('#btn-logout').on('click',function(){
 			window.location.href = "index.php";
 		})

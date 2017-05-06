@@ -54,31 +54,18 @@
 
 	var diff = 0;
 	$(document).ready(function(){
-		var toSeconds = function(s){
-			var b = s.split(':');
-			return b[0]*3600 + b[1]*60 + b[2]*1 ;
-		};
 		var setTime= setInterval(function(){
 			var d = new Date();
 			$('#jam-keluar').val(d.toTimeString().split(' ')[0]);
-			var end = toSeconds($('#jam-keluar').val());
-			var start = toSeconds($('#jam-masuk').val());
-			diff = end - start;
-
-			if(start > end){
-				diff = diff + (24*60*60);
-			}
-
-			console.log(Math.ceil(diff/3600));
-			diff = Math.ceil(diff/3600);
-
-			
-
 		},1000);
 
 	});
 
 	$('#barcode').on('keyup',function (){
+		var toSeconds = function(s){
+			var b = s.split(':');
+			return b[0]*3600 + b[1]*60 + b[2]*1 ;
+		};
 		var setInput = function(a,b,c){
 			$('#noplat').val(a);
 			$('#jam-masuk').val(b);
@@ -88,14 +75,19 @@
 				console.log(result);
 				var hitung = function(){
 					var total = 0;
-					if(jenis == "Mobil"){
-						total = 3000 * diff;
+					
+					var end = toSeconds($('#jam-keluar').val());
+					var start = toSeconds($('#jam-masuk').val());
+					var diff = end - start;
 
+					if(start > end){
+						diff = diff + (24*60*60);
 					}
-					else if (jenis == "Motor"){
-						total = 2000 * diff;
-					}
-					else total = 0;
+
+					console.log(Math.ceil(diff/3600));
+					diff = Math.ceil(diff/3600);
+
+					total = 0;
 					console.log("Total "+diff)
 					return total+tarif;
 				}

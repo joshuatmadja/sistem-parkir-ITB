@@ -5,7 +5,7 @@
 	$jam_keluar = $_GET['jam-keluar'];
 	$total = $_GET['biaya'];
 
-	$queryupdate = "UPDATE transaksi_tamu SET jam_keluar='$jam_keluar' WHERE barcode='$barcode'";
+	$queryupdate = "UPDATE transaksi_umum SET jam_keluar='$jam_keluar' WHERE barcode='$barcode'";
 	$queryupdate2 = "UPDATE transaksi SET total='$total' WHERE barcode='$barcode'";
 	
 
@@ -14,5 +14,5 @@
 	$res = $mysqli->query($queryupdate2);
 	echo 'lolos 2';
 
-	header('Location:dashboard-admin-gerbangutama.php?status=4');
+	header('Location:dashboard-admin.php?status=4');
 ?>
