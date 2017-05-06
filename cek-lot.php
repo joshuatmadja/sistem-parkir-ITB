@@ -2,7 +2,7 @@
 	include 'connect.php';
 	$id = $_GET['zona'];
 	$arr = array();
-	$time = date("Y-m-d H:m:s");
+	
 	
 	$query = "SELECT * FROM area WHERE id='$id'";
 	$result = $mysqli->query($query);

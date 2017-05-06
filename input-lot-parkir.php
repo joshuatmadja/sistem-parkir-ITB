@@ -12,7 +12,19 @@
 					<div class="input-label">Nama Petugas</div>
 				</div>
 				<div class="col-xs-4">
-					<input class="form-control" type="text" name="noplat" id="noplat"></div>
+					<select class="form-control" name="petugas" id="petugas">
+						<option></option>
+						<?php
+							$query = "SELECT * FROM petugas";
+							$result = $mysqli->
+						query($query);
+							while($ch = $result->fetch_array(MYSQLI_ASSOC)){
+								echo '<option value='.$ch['id'].'>'.$ch['nama'].'</option>
+						';
+							}
+						?>
+					</select>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-offset-3 col-md-2">
@@ -75,7 +87,7 @@
 				if(result.length>0){
 					var json = JSON.parse(result);
 					kapasitas = json.kapasitas;
-					sisa = json.sisa;
+					sisa = kapasitas-json.sisa;
 					setKapasitas(kapasitas,sisa);
 				}
 				else{
@@ -87,50 +99,31 @@
 		});
 
 		$('#btn-keluar').on('click',function(){
-			$.ajax({url:"find-pelanggaran.php?id="+$('#area').val(), success: function(result){
-					console.log(result);
-					
-					if(result.length > 0){
-						var json = JSON.parse(result);
-						console.log(json);
-						barcode = json.barcode;
-						jenis = json.jenis;
-						nohp = json.no_hp;
-						setInput(barcode, jenis, nohp);
-					}
-					else{
-						setInput("","","");
-					}
-				}
-			});
-		});
-
-		$('#noplat').on('keyup',function (){
-			var setInput = function(a,b,c){
-				$('#barcode').val(a);
-				$('#jenis').val(b);
-				$('#nohp').val(c);
+			var setSisa = function(a){
+				$('#sisa').val(a);
 			}
-			$.ajax({url:"find-pelanggaran.php?id="+$(this).val(), success: function(result){
-					console.log(result);
-					
+			$.ajax({url:"lot-keluar.php?area="+$('#area').val()+"&petugas="+$('#petugas').val(), success: function(result){
 					if(result.length > 0){
 						var json = JSON.parse(result);
-						console.log(json);
-						barcode = json.barcode;
-						jenis = json.jenis;
-						nohp = json.no_hp;
-						setInput(barcode, jenis, nohp);
-					}
-					else{
-						setInput("","","");
+						sisa = json.kapasitas-json.sisa;
+						setSisa(sisa);
 					}
 				}
 			});
 		});
 
-		$('#btn-tidak-bisa').on('click',function(){
-			$('#form-input').submit();
-		})
+		$('#btn-masuk').on('click',function(){
+			var setSisa = function(a){
+				$('#sisa').val(a);
+			}
+			$.ajax({url:"lot-masuk.php?area="+$('#area').val()+"&petugas="+$('#petugas').val(), success: function(result){
+					if(result.length > 0){
+						var json = JSON.parse(result);
+						sisa = json.kapasitas-json.sisa;
+						setSisa(sisa);
+					}
+				}
+			});
+		});
 	</script>
 <?php include "footer.php" ?>

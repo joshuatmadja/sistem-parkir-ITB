@@ -5,7 +5,7 @@
 	$nip = $_GET['nip'];
 	$jam_masuk = $_GET['jam-masuk'];
 	$noplat = $_GET['noplat'];
-	$lokasi = $_GET['lokasi'];
+	$lokasi = $_GET['parkir'];
 	$tgl = date("Y-m-d");
 
 	$queryselect = "SELECT * FROM kendaraan WHERE noplat='$noplat'";
@@ -21,5 +21,12 @@
 	$res = $mysqli->query($queryinsert2);
 	echo 'lolos 2';
 
-	header('Location:dashboard-admin-gerbangutama.php?status=1');
+	$q = "SELECT * FROM area WHERE nama = '$lokasi'";
+	$r = $mysqli->query($q);
+	while($x = $r->fetch_array(MYSQLI_ASSOC)){
+		$area = $x["id"]; break;
+	}
+
+	
+	header('Location:alokasi-parkir.php?area='.$area);
 ?>

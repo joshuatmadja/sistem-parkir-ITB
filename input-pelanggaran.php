@@ -37,7 +37,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-offset-3 col-md-2">
-					<div class="input-label">Lokasi Parkir</div>
+					<div class="input-label">Jenis Pelanggaran</div>
 				</div>
 				<div class="col-md-3">
 					<select class="form-control" name="pelanggaran" id="pelanggaran">

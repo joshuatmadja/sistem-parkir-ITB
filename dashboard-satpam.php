@@ -21,6 +21,10 @@
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 	<script>
 
+		$('#btn-input-lot').on('click',function(){
+			window.location.href = "input-lot-parkir.php";
+		});
+		
 		$('#btn-lapor-pelanggaran').on('click',function(){
 			window.location.href = "input-pelanggaran.php";
 		});

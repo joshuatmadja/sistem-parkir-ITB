@@ -21,5 +21,11 @@
 	$res = $mysqli->query($queryinsert2);
 	echo 'lolos 2';
 
-	header('Location:dashboard-admin-gerbangutama.php');
+	$q = "SELECT * FROM area WHERE nama = '$lokasi'";
+	$r = $mysqli->query($q);
+	while($x = $r->fetch_array(MYSQLI_ASSOC)){
+		$area = $x["id"]; break;
+	}
+
+	header('Location:alokasi-parkir.php?area='.$area);
 ?>
